@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/Kesha005/go_package/common/db"
+	"github.com/Kesha005/go_package/pkg/common/db"
 	"github.com/Kesha005/go_package/pkg/books"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
@@ -10,8 +10,8 @@ import (
 func main(){
 	viper.SetConfigFile("./pkg/common/envs/.env")
 	viper.ReadInConfig()
-	port :=viper.GET("PORT").(string)
-	dbUrl := viper.GET("DB_URL").(string)
+	port :=viper.Get("PORT").(string)
+	dbUrl := viper.Get("DB_URL").(string)
 
 	router := gin.Default()
 	dbHandler := db.Init(dbUrl)
