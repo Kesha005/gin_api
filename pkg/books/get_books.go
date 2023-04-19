@@ -3,16 +3,17 @@ package books
 import (
 	"net/http"
 
-	"github.com/Kesha005/go_package/pkg/common/models"
 	"github.com/gin-gonic/gin"
+
+	"github.com/Kesha005/go_package/pkg/common/models"
 )
 
-func (h handler) GetBooks(c *gin.Context){
+func (h handler) GetBooks(c *gin.Context) {
 	var books []models.Book
 
-	if result := h.DB.Find(&books); result.Error !=nil{
-		c.AbortWithError(http.StatusNotFound,result.Error)
-		return 
+	if result := h.DB.Find(&books); result.Error != nil {
+		c.AbortWithError(http.StatusNotFound, result.Error)
+		return
 	}
-	c.JSON(http.StatusOK,&books)
+	c.JSON(http.StatusOK, &books)
 }

@@ -2,39 +2,38 @@ package books
 
 import (
 	"net/http"
-	"github.com/Kesha005/go_package/pkg/common/models"
+
 	"github.com/gin-gonic/gin"
+
+	"github.com/Kesha005/go_package/pkg/common/models"
 )
 
-type UpdateBookRequestBody struct{
-	Title string `json:"title:`
-	Author string `json:"author"`
+type UpdateBookRequestBody struct {
+	Title       string `json:"title"`
+	Author      string `json:"author"`
 	Description string `json:"description"`
 }
 
-
-func (h handler) UpdateBook(ctx *gin.Context){
+func (h handler) UpdateBook(ctx *gin.Context) {
 
 	id := ctx.Param("id")
 	body := UpdateBookRequestBody{}
 
-	if err := ctx.BindJSON(&body); err != nil{
-		ctx.AbortWithError(http.StatusBadRequest,err)
-		return 
+	if err := ctx.BindJSON(&body); err != nil {
+		ctx.AbortWithError(http.StatusBadRequest, err)
+		return
 	}
 	var book models.Book
 
-	if result :=h.DB.First(&book , id); result.Error != nil{
-		ctx.AbortWithError(http.StatusNotFound ,result.Error)
-		return 
+	if result := h.DB.First(&book, id); result.Error != nil {
+		ctx.AbortWithError(http.StatusNotFound, result.Error)
+		return
 	}
 
+	book.Title = body.Title
+	book.Author = body.Author
+	book.Description = body.Description
 
-
-	book.Title=body.Title
-	book.Author=body.Author
-	book.Description=body.Description
-	
 	h.DB.Save(&book)
-	ctx.JSON(http.StatusAccepted,&book)
+	ctx.JSON(http.StatusAccepted, &book)
 }
