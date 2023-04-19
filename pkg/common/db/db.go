@@ -2,15 +2,17 @@ package db
 
 import (
 	"log"
-	"github.com/Kesha005/go_package/pkg/common/models"
+
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
+
+	"github.com/Kesha005/book_crud/pkg/common/models"
 )
 
-func Init(url string) *gorm.DB{
-	db ,err := gorm.Open(mysql.Open(url),&gorm.Config{})
+func Init(url string) *gorm.DB {
+	db, err := gorm.Open(mysql.Open(url), &gorm.Config{})
 
-	if err != nil{
+	if err != nil {
 		log.Fatal(err)
 	}
 	db.AutoMigrate(&models.Book{})

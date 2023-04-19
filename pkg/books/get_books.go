@@ -5,7 +5,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/Kesha005/go_package/pkg/common/models"
+	"github.com/Kesha005/book_crud/pkg/common/models"
 )
 
 func (h handler) GetBooks(c *gin.Context) {

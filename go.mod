@@ -1,4 +1,4 @@
-module github.com/Kesha005/go_package
+module github.com/Kesha005/book_crud
 
 go 1.19
 

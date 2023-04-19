@@ -4,9 +4,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
 
-	"github.com/Kesha005/go_package/pkg/books"
-	"github.com/Kesha005/go_package/pkg/common/db"
-
+	"github.com/Kesha005/book_crud/pkg/books"
+	"github.com/Kesha005/book_crud/pkg/common/db"
 )
 
 func main() {

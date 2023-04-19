@@ -3,7 +3,7 @@ package books
 import (
 	"net/http"
 
-	"github.com/Kesha005/go_package/pkg/common/models"
+	"github.com/Kesha005/book_crud/pkg/common/models"
 	"github.com/gin-gonic/gin"
 )
 
