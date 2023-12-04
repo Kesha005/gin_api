@@ -14,7 +14,7 @@ type datab struct{
 
 
 type BookRequest struct{
-	
+
 	Name string `json:"name"`
 	Author string `"author"`
 }
@@ -48,4 +48,21 @@ func (db datab) Store(ctx *gin.Context){
 	}
 	ctx.JSON(http.StatusAccepted,&book)
 	
+}
+
+
+func (db datab) Update(ctx *gin.Context){
+
+}
+
+
+func (db datab) GetById(ctx *gin.Context){
+	id := ctx.Param("id")
+	var book models.Book
+	result := db.Db.Find(&book,id)
+	ctx.JSON(http.StatusOK, result)
+}
+
+func (db datab) Delete(ctx *gin.Context){
+
 }
