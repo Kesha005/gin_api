@@ -7,5 +7,5 @@ import "gorm.io/gorm"
 type Book struct{
 	gorm.Model
 	Name string `json:"name"`
-	Author string `"author"`
+	Author string `json:"author"`
 }
